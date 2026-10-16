@@ -1,6 +1,6 @@
 package Java.BinarySearchTree;
 
-public class TreeNode {
+class TreeNode {
     int data;
     TreeNode left;
     TreeNode right;
