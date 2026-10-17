@@ -58,5 +58,23 @@ public class HashMap {
         return null; // Key not found
     }
 
+    public void remove(int key) {
+        int index = getBucketIndex(key);
+        HashMapNode current = buckets[index];
+        HashMapNode prev = null;
+
+        while (current != null) {
+            if (current.key == key) {
+                if (prev == null) {
+                    buckets[index] = current.next; // Remove head
+                } else {
+                    prev.next = current.next; // Bypass the node to remove it
+                }
+                return;
+            }
+            prev = current;
+            current = current.next;
+        }
+    }
 
 }
