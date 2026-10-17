@@ -13,5 +13,17 @@ class HashMapNode {
 }
 
 public class HashMap {
-    
+    private HashMapNode[] buckets;
+    private int capacity;
+
+    public HashMap(int capacity) {
+        this.capacity = capacity;
+        this.buckets = new HashMapNode[capacity];
+    }
+
+    private int getBucketIndex(int key) {
+        return key % capacity;
+    }
+
+
 }
