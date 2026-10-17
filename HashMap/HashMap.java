@@ -25,5 +25,38 @@ public class HashMap {
         return key % capacity;
     }
 
+    public void put(int key, int value) {
+        int index = getBucketIndex(key);
+        HashMapNode newNode = new HashMapNode(key, value);
+        if (buckets[index] == null) {
+            buckets[index] = newNode;
+        } else {
+            HashMapNode current = buckets[index];
+            while (current != null) {
+                if (current.key == key) {
+                    current.value = value; // Update existing key
+                    return;
+                }
+                if (current.next == null) {
+                    current.next = newNode; // Add new node at the end
+                    return;
+                }
+                current = current.next;
+            }
+        }
+    }
+
+    public Integer get(int key) {
+        int index = getBucketIndex(key);
+        HashMapNode current = buckets[index];
+        while (current != null) {
+            if (current.key == key) {
+                return current.value;
+            }
+            current = current.next;
+        }
+        return null; // Key not found
+    }
+
 
 }
