@@ -77,4 +77,15 @@ public class HashMap {
         }
     }
 
+    public void printHashMap() {
+        for (int i = 0; i < capacity; i++) {
+            System.out.print("Bucket " + i + ": ");
+            HashMapNode current = buckets[i];
+            while (current != null) {
+                System.out.print("[" + current.key + "=" + current.value + "] ");
+                current = current.next;
+            }
+            System.out.println();
+        }
+    }
 }
